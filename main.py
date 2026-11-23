@@ -8,6 +8,9 @@ import os
 
 ENTRY = "WARNING: This human will insist it is 'five minutes away' while still in bed. Allow 45 minutes and do not trust its ETA."
 
+# Gate from the competition rules: entry.txt must be 1-160 UTF-8 chars.
+ENTRY_MAX = 160
+
 
 def main() -> None:
     out_dir = "/output"
@@ -19,7 +22,7 @@ def main() -> None:
     with open(path, encoding="utf-8") as f:
         written = f.read()
     assert written == ENTRY, "entry.txt mismatch"
-    assert 1 <= len(written) <= 160 and written.strip(), "entry out of gate"
+    assert 1 <= len(written) <= ENTRY_MAX and written.strip(), "entry out of gate"
 
 
 if __name__ == "__main__":
